@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Web Lab 01 – a responsive, accessible task manager built with plain HTML, CSS and JavaScript." />
+  <title>Task Manager · Web Lab 01</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Task Manager</h1>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode">🌓</button>
+  </header>
+
+  <main class="container">
+    <form id="task-form" class="card task-form" autocomplete="off" novalidate>
+      <label for="task-title" class="sr-only">Task</label>
+      <input id="task-title" name="title" type="text" placeholder="What needs doing?" maxlength="120" required />
+      <label for="task-priority" class="sr-only">Priority</label>
+      <select id="task-priority" name="priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <label for="task-due" class="sr-only">Due date</label>
+      <input id="task-due" name="due" type="date" />
+      <button type="submit" class="btn primary">Add</button>
+      <p id="form-error" class="error" role="alert" hidden></p>
+    </form>
+
+    <section class="toolbar" aria-label="Filters">
+      <div class="filters" role="group" aria-label="Show">
+        <button type="button" class="chip active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="active" aria-pressed="false">Active</button>
+        <button type="button" class="chip" data-filter="done" aria-pressed="false">Done</button>
+      </div>
+      <label for="search" class="sr-only">Search tasks</label>
+      <input id="search" type="search" placeholder="Search…" />
+    </section>
+
+    <section class="stats card" aria-live="polite">
+      <div><span id="stat-total">0</span><small>Total</small></div>
+      <div><span id="stat-active">0</span><small>Active</small></div>
+      <div><span id="stat-done">0</span><small>Done</small></div>
+      <div class="progress" aria-hidden="true"><div id="progress-bar"></div></div>
+    </section>
+
+    <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+    <p id="empty-state" class="empty">No tasks here. Add one above ✨</p>
+
+    <div class="footer-actions">
+      <button id="clear-done" type="button" class="btn ghost">Clear completed</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Web Lab 01 · HTML · CSS (Grid/Flexbox) · Vanilla JS · localStorage</p>
+  </footer>
+
+  <template id="task-template">
+    <li class="task">
+      <input type="checkbox" class="task-check" />
+      <div class="task-body">
+        <span class="task-title"></span>
+        <div class="task-meta">
+          <span class="badge"></span>
+          <time class="task-due"></time>
+        </div>
+      </div>
+      <button type="button" class="icon-btn task-delete" aria-label="Delete task">✕</button>
+    </li>
+  </template>
+
+  <script src="tasks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

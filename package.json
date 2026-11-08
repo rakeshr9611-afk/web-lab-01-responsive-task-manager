@@ -1,0 +1,10 @@
+{
+  "name": "web-lab-01-responsive-task-manager",
+  "version": "1.0.0",
+  "description": "Web Lab 01: responsive, accessible task manager in vanilla HTML/CSS/JS",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "license": "MIT"
+}
